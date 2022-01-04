@@ -16,7 +16,7 @@ jobs:
             path: demo-model
 
         - name: Build with Maven
-          run: echo ls -la
+          run: ls -la
 
         - name: Build with Maven
           run: cd /home/runner/work/demo/demo/demo-model | pwd | ls -la | mvn -B package --file pom.xml
