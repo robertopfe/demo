@@ -11,9 +11,9 @@ jobs:
         - id: set_var
           run: |
             content=`cat ./dependencies.json`
-            echo "::set-output name=dependencies::$content"
+            echo "::set-output name=jsonDep::$content"
         - run: |
-            echo "${{fromJson(steps.set_var.outputs.dependencies).repository}}"
+            echo "${{fromJson(steps.set_var.outputs.jsonDep.dependencies).repository}}"
 
 
 
@@ -25,17 +25,17 @@ jobs:
         - name: Checkout cross repo
           uses: actions/checkout@v2
           with:
-            repository:  ${{fromJson(steps.set_var.outputs.dependencies).repository}}
-            path:  ${{fromJson(steps.set_var.outputs.dependencies).path}}
-            ref:  ${{fromJson(steps.set_var.outputs.dependencies).ref}}
+            repository:  ${{fromJson(steps.set_var.outputs.jsonDep.dependencies[0]).repository}}
+            path:  ${{fromJson(steps.set_var.outputs.jsonDep.dependencies[0]).path}}
+            ref:  ${{fromJson(steps.set_var.outputs.jsonDep.dependencies[0]).ref}}
         
         - name: Build with Maven
-          working-directory: ./demo-model
+          working-directory: ./${{fromJson(steps.set_var.outputs.jsonDep.dependencies).path}}
           run: |
             mvn -B install --file pom.xml
         
         - name: ls
-          working-directory: /home/runner/.m2/repository/com/inditex/example/demo-model/0.0.2
+          working-directory: /home/runner/.m2/repository/com/inditex/example/${{fromJson(steps.set_var.outputs.jsonDep.dependencies).path}}/0.0.2
           run: |
             ls -la
             
