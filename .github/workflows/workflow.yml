@@ -20,6 +20,11 @@ jobs:
             repository:  robertopfe/demo-model
             path: demo-model
             
+        - name: ls
+          working-directory: ./demo-model
+          run: |
+            ls -la
+            
         - name: checkout to branch
           working-directory: ./demo-model
           run: git checkout feature/prueba
