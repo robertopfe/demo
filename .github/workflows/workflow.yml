@@ -15,6 +15,9 @@ jobs:
             repository:  robertopfe/demo-model
             path: demo-model
 
+        - name: ls
+          run: ls -la
+
         - name: Build with Maven
           working-directory: ./demo-model
           run: mvn -B install --file pom.xml
