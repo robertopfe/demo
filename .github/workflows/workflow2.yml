@@ -9,6 +9,7 @@ jobs:
             path: ./principal
 
         - id: set_var
+          working-directory: ./principal
           run: |
             content=`cat ./dependencies.json`
             echo "::set-output name=jsonDep::$content"
