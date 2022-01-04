@@ -17,7 +17,7 @@ jobs:
 
         - name: Build with Maven
           working-directory: ./demo-model
-          run: mvn -B package --file pom.xml
+          run: mvn -B install --file pom.xml
 
         - uses: actions/checkout@v2
 
