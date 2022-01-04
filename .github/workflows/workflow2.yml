@@ -21,7 +21,7 @@ jobs:
           with:
             repository:  ${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].repository}}
             path:  ${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].path}}
-            ref:  ${{fromJson(steps.set_var.outputs.jsonDep.dependencies[0]).dependencies[0].ref}}
+            ref:  ${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].ref}}
         
         - name: Build with Maven
           working-directory: ./${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].path}}
