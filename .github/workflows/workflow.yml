@@ -14,10 +14,10 @@ jobs:
           with:
             repository:  robertopfe/demo-model
             path: demo-model
-
-        - uses: actions/checkout@v2
         
         - name: Build with Maven
           working-directory: ./demo-model
           run: |
             mvn -B install --file pom.xml
+
+        - uses: actions/checkout@v2
