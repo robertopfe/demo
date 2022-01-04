@@ -16,6 +16,7 @@ jobs:
             path: demo-model
 
         - name: Build with Maven
+          working-directory: ./demo-model
           run: ls -la
 
         - name: Build with Maven
