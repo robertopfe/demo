@@ -19,15 +19,7 @@ jobs:
           with:
             repository:  robertopfe/demo-model
             path: demo-model
-            
-        - name: ls
-          working-directory: ./demo-model
-          run: |
-            ls -la
-            
-        - name: checkout to branch
-          working-directory: ./demo-model
-          run: git fetch --all | git checkout feature/prueba
+            ref: feature/prueba
         
         - name: Build with Maven
           working-directory: ./demo-model
