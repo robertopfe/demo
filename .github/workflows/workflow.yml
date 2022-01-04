@@ -8,13 +8,6 @@ jobs:
           uses: actions/setup-java@v1
           with:
             java-version: 1.11
-        - name: Cache local Maven repository
-          uses: actions/cache@v2
-          with:
-            path: ~/.m2/repository
-            key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-            restore-keys: |
-              ${{ runner.os }}-maven-
       
         - name: Checkout cross repo
           uses: actions/checkout@v2
@@ -26,9 +19,14 @@ jobs:
           working-directory: ./demo-model
           run: |
             mvn -B install --file pom.xml
-
+            
         - uses: actions/checkout@v2
         
+        - name: ls
+          working-directory: /home/runner/.m2/repository/com/inditex/example/demo-model/0.0.1-SNAPSHOT
+          run: |
+            ls -la
+            
         - name: Build with Maven
           run: |
             mvn -B install --file pom.xml
