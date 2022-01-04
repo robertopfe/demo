@@ -37,6 +37,7 @@ jobs:
           working-directory: ./${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].path}}/src/main/java/com/inditex/example/demomodel/entity
           run: |
             ls -la
+            pwd
             
         - name: Build with Maven
           run: mvn package
