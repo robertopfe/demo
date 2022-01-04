@@ -21,5 +21,3 @@ jobs:
           working-directory: ./demo-model
           run: |
             mvn -B install --file pom.xml
-            cd ..
-            mvn -B package --file pom.xml
