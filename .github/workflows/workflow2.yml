@@ -4,7 +4,9 @@ jobs:
   compile-mvn:
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v2          
+        - uses: actions/checkout@v2
+          with: 
+            path: ./principal
 
         - id: set_var
           run: |
@@ -28,16 +30,17 @@ jobs:
           run: |
             mvn -B install --file pom.xml
         
-        - name: ls
+        - name: ls jar instalado
           working-directory: /home/runner/.m2/repository/com/inditex/example/${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].path}}/0.0.2
           run: |
             ls -la
             
-        - name: ls 2
+        - name: ls paquete existe
           working-directory: ./${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].path}}/src/main/java/com/inditex/example/demomodel/entity
           run: |
             ls -la
             pwd
             
         - name: Build with Maven
+          working-directory: ./principal
           run: mvn package
