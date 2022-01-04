@@ -27,7 +27,7 @@ jobs:
         - name: Checkout cross repo
           uses: actions/checkout@v2
           with:
-            repository:  ${{fromJson(steps.set_var.outputs.dependencies.0).repository}}
+            repository:  ${{fromJson(steps.set_var.outputs.dependencies[0]).repository}}
             path:  ${{fromJson(steps.set_var.outputs.dependencies[0]).path}}
             ref:  ${{fromJson(steps.set_var.outputs.dependencies[0]).ref}}
         
