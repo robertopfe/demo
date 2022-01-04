@@ -2,7 +2,7 @@ name: compile with mvn
 on: [push]
 jobs:
   compile-mvn:
-      runs-on: ubuntu-lastest
+      runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
         - name: Set up JDK 1.11
