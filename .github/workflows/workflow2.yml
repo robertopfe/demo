@@ -5,7 +5,8 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2          
-
+        - run: |
+            cat ./dependencies.json
 
         - id: set_var
           run: |
