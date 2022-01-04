@@ -28,7 +28,7 @@ jobs:
             mvn -B install --file pom.xml
         
         - name: ls
-          working-directory: /home/runner/.m2/repository/com/inditex/example/demo-model/0.0.1-SNAPSHOT
+          working-directory: /home/runner/.m2/repository/com/inditex/example/demo-model/0.0.2
           run: |
             ls -la
             
