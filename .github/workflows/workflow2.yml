@@ -1,4 +1,4 @@
-name: compile with mvn
+name: compile2 with mvn
 on: [push]
 jobs:
   compile-mvn:
@@ -15,7 +15,7 @@ jobs:
             content="${content//$'r'/'%0D'}"
             echo "::set-output name=dependencies::$content"
         - run: |
-            echo "${{fromJson(steps.set_var.outputs.dependencies[0]).repository}}"
+            echo "${{fromJson(steps.set_var.outputs.dependencies).repository}}"
 
 
 
@@ -27,9 +27,9 @@ jobs:
         - name: Checkout cross repo
           uses: actions/checkout@v2
           with:
-            repository:  ${{fromJson(steps.set_var.outputs.dependencies[0]).repository}}
-            path:  ${{fromJson(steps.set_var.outputs.dependencies[0]).path}}
-            ref:  ${{fromJson(steps.set_var.outputs.dependencies[0]).ref}}
+            repository:  ${{fromJson(steps.set_var.outputs.dependencies).repository}}
+            path:  ${{fromJson(steps.set_var.outputs.dependencies).path}}
+            ref:  ${{fromJson(steps.set_var.outputs.dependencies).ref}}
         
         - name: Build with Maven
           working-directory: ./demo-model
