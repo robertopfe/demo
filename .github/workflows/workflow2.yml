@@ -5,17 +5,11 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2          
-        - run: |
-            cat ./dependencies.json
 
         - id: set_var
           run: |
             content=`cat ./dependencies.json`
             echo "::set-output name=jsonDep::$content"
-        - run: |
-            echo "${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].repository}}"
-
-
 
         - name: Set up JDK 1.11
           uses: actions/setup-java@v1
@@ -26,16 +20,16 @@ jobs:
           uses: actions/checkout@v2
           with:
             repository:  ${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].repository}}
-            path:  ${{fromJson(steps.set_var.outputs.jsonDep.dependencies[0]).path}}
-            ref:  ${{fromJson(steps.set_var.outputs.jsonDep.dependencies[0]).ref}}
+            path:  ${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].path}}
+            ref:  ${{fromJson(steps.set_var.outputs.jsonDep.dependencies[0]).dependencies[0].ref}}
         
         - name: Build with Maven
-          working-directory: ./${{fromJson(steps.set_var.outputs.jsonDep.dependencies).path}}
+          working-directory: ./${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].path}}
           run: |
             mvn -B install --file pom.xml
         
         - name: ls
-          working-directory: /home/runner/.m2/repository/com/inditex/example/${{fromJson(steps.set_var.outputs.jsonDep.dependencies).path}}/0.0.2
+          working-directory: /home/runner/.m2/repository/com/inditex/example/${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].path}}/0.0.2
           run: |
             ls -la
             
