@@ -19,7 +19,7 @@ jobs:
           run: ls -la
 
         - name: Build with Maven
-          run: cd demo-model | ls -la
+          run: cd demo-model/demo-model | ls -la
 
         - name: Build with Maven
           run: cd /home/runner/work/demo/demo/demo-model | pwd | ls -la | mvn -B package --file pom.xml
