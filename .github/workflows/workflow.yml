@@ -27,7 +27,7 @@ jobs:
             
         - name: checkout to branch
           working-directory: ./demo-model
-          run: git checkout feature/prueba
+          run: git fetch --all | git checkout feature/prueba
         
         - name: Build with Maven
           working-directory: ./demo-model
