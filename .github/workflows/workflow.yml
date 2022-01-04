@@ -26,6 +26,14 @@ jobs:
             mvn -B install --file pom.xml
             
         - uses: actions/checkout@v2
+          with:
+            repository:  robertopfe/demo
+            path: demo
+            
+        - name: Build with Maven
+          working-directory: ./demo
+          run: |
+            mvn -B install --file pom.xml
         
         - name: ls
           working-directory: /home/runner/.m2/repository/com/inditex/example/demo-model/0.0.1-SNAPSHOT
