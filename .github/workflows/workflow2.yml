@@ -15,7 +15,7 @@ jobs:
             content="${content//$'r'/'%0D'}"
             echo "::set-output name=dependencies::$content"
         - run: |
-            echo "${{fromJson(steps.set_var.outputs.dependencies.0).repository}}"
+            echo "${{fromJson(steps.set_var.outputs.dependencies)[0].repository}}"
 
 
 
