@@ -1,4 +1,4 @@
-name: compile2 with mvn
+name: External JSON - Compile with other repo dependency
 on: [push]
 jobs:
   compile-mvn:
@@ -30,17 +30,6 @@ jobs:
           working-directory: ./${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].path}}
           run: |
             mvn -B install --file pom.xml
-        
-        - name: ls jar instalado
-          working-directory: /home/runner/.m2/repository/com/inditex/example/${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].path}}/0.0.2
-          run: |
-            ls -la
-            
-        - name: ls paquete existe
-          working-directory: ./${{fromJson(steps.set_var.outputs.jsonDep).dependencies[0].path}}/src/main/java/com/inditex/example/demomodel/entity
-          run: |
-            ls -la
-            pwd
             
         - name: Build with Maven
           working-directory: ./principal
