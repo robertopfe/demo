@@ -61,4 +61,4 @@ jobs:
             cat settings.xml
             
         - name: Build with Maven repo demo
-          run: mvn package
+          run: mvn -B package --file pom.xml
