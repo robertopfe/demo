@@ -1,4 +1,4 @@
-name: 
+name: Compile with other repo dependency
 on: [push]
 env:
   DEPENDENCY_REPOSITORY: "robertopfe/demo-model"
