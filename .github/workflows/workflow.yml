@@ -41,7 +41,7 @@ jobs:
         - name: ls ./demo-model/target/classses/com/inditex/example/demomodel/entity
           working-directory: ./demo-model/target/classses/com/inditex/example/demomodel/entity
           run: |
-            ls -la | cat ProductEntity.java
+            ls -la 
             
         - name: ls /home/runner/.m2/repository/com/inditex/example/demo-model/0.0.2
           working-directory: /home/runner/.m2/repository/com/inditex/example/demo-model/0.0.2
