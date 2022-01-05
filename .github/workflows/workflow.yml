@@ -58,6 +58,7 @@ jobs:
           working-directory: /home/runner/.m2
           run: |
             ls -la
+            cat settings.xml
             
         - name: Build with Maven repo demo
           run: mvn package
