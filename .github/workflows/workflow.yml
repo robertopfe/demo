@@ -49,5 +49,15 @@ jobs:
           run: |
             ls -la
             
+        - name: ls /home/runner/.m2/repository
+          working-directory: /home/runner/.m2/repository
+          run: |
+            ls -la
+            
+        - name: ls /home/runner/.m2
+          working-directory: /home/runner/.m2
+          run: |
+            ls -la
+            
         - name: Build with Maven repo demo
           run: mvn package
