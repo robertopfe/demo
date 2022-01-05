@@ -1,4 +1,4 @@
-name: compile with mvn
+name: 
 on: [push]
 env:
   DEPENDENCY_REPOSITORY: "robertopfe/demo-model"
@@ -20,45 +20,12 @@ jobs:
           with:
             repository:  ${{env.DEPENDENCY_REPOSITORY}}
             path:  ${{env.DEPENDENCY_PATH}}
-            ref:  ${{env.DEPENDENCY_REF}}
-
-
-        - name: Setup Maven Cache
-          uses: actions/cache@v2.1.6
-          continue-on-error: true
-          with:
-            path: ~/.m2/repository
-            key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-            restore-keys: |
-              ${{ runner.os }}-maven-
-              
+            ref:  ${{env.DEPENDENCY_REF}}             
             
         - name: Build with Maven repo demo-model
           working-directory: ./demo-model
           run: |
             mvn -B install --file pom.xml
-        
-        - name: ls ./demo-model/target/classes/com/inditex/example/demomodel/entity
-          working-directory: ./demo-model/target/classes/com/inditex/example/demomodel/entity
-          run: |
-            ls -la 
-            cat ProductEntity.class
-            
-        - name: ls /home/runner/.m2/repository/com/inditex/example/demo-model/0.0.2
-          working-directory: /home/runner/.m2/repository/com/inditex/example/demo-model/0.0.2
-          run: |
-            ls -la
-            
-        - name: ls /home/runner/.m2/repository
-          working-directory: /home/runner/.m2/repository
-          run: |
-            ls -la
-            
-        - name: ls /home/runner/.m2
-          working-directory: /home/runner/.m2
-          run: |
-            ls -la
-            cat settings.xml
             
         - name: Build with Maven repo demo
           run: mvn -B package --file pom.xml
