@@ -14,8 +14,8 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		LOGGER.info("Iniciando");
 		ProductEntity productEntity = new ProductEntity();
-		productEntity.setCode( 2 );
-		LOGGER.info("Iniciando " + productEntity.getCode() );
+		productEntity.setId( 2 );
+		LOGGER.info("Iniciando " + productEntity.getId() );
 
 		SpringApplication.run(DemoApplication.class, args);
 	}
