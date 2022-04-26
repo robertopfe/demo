@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>com.inditex.example</groupId>
 			<artifactId>demo-model</artifactId>
-			<version>0.0.2</version>
+			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
