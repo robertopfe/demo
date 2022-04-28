@@ -19,6 +19,7 @@ public class DemoApplication {
 		LOGGER.info("Iniciando " + productEntity.getCode() );
 
 		SpringApplication.run(DemoApplication.class, args);
+		
 	}
 
 }
